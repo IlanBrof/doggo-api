@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv').config();
+const dogsRouter = require('./routes/dogs');
 
 const app = express();
 const { PORT, DB_ADDRESS } = require('./utils/serverConfig');
@@ -10,8 +11,11 @@ mongoose.connect(DB_ADDRESS);
 
 app.get('/', (req, res) => {
   res.status(200);
-    res.send('Welcome to Doggo-API');
+  res.send('Welcome to Doggo-API');
 });
+
+
+app.use('/dogs', dogsRouter);
 
 app.listen(PORT, (error) => {
   if (!error) {
