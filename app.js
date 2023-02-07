@@ -14,6 +14,10 @@ app.get('/', (req, res) => {
   res.send('Welcome to Doggo-API');
 });
 
+app.get('/dogs', (req, res) => {
+  res.status(200);
+  res.send('dogs');
+});
 
 app.use('/dogs', dogsRouter);
 
